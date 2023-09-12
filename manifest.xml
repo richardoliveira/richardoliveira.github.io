@@ -5,21 +5,21 @@
   xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>C4E304B6-24D2-416B-9BC6-2B4C4D37AEFB</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Contoso</ProviderName>
+  <ProviderName>Florence</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Hello world"/>
-  <Description DefaultValue="A simple hello world Office Add-in."/>
-  <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/word-hello-world/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/word-hello-world/assets/icon-64.png"/>
+  <DisplayName DefaultValue="Feasibility"/>
+  <Description DefaultValue="A simple feasibility Office Add-in."/>
+  <IconUrl DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/>
   <AppDomains>
-    <AppDomain>https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/word-hello-world</AppDomain>
+    <AppDomain>https://github.com/richardoliveira/add-in-word/tree/main</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Document"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/word-hello-world/taskpane.html"/>
+    <SourceLocation DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -64,13 +64,13 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/word-hello-world/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/word-hello-world/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/word-hello-world/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="http://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/word-hello-world/taskpane.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with the Hello world add-in!"/>
