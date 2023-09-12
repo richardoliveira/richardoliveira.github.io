@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+<body>
+    <p>This add-in displays the selected text from the document.</p>
+    <div id="selectedText"></div>
+</body>
+<script>
+    Office.onReady((info) => {
+        if (info.host === Office.HostType.Word) {
+            Word.document.onSelectionChanged.add(() => {
+                return Word.run((context) => {
+                    const selectedRange = context.document.getSelection();
+                    selectedRange.load("text");
+                    return context.sync()
+                        .then(() => {
+                            const selectedText = document.getElementById("selectedText");
+                            selectedText.innerHTML = "O texto selecionado foi: " + selectedRange.text;
+                        });
+                });
+            });
+        }
+    });
+</script>
+</html>
