@@ -4,7 +4,7 @@
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 </head>
 <body>
-    <p>This add-in displays the selected text from the document.</p>
+    <p>This add-in displays the selected text from the document+</p>
     <div id="selectedText"></div>
     <div id="logs"></div>
 </body>
@@ -17,6 +17,7 @@
     Office.initialize = () => {
         log('Office.initialize');
         log('Office.context.host: ' + Office.context.host);
+        log('Office.HostType.Word: ' + Office.HostType.Word);
         if (Office.context.host === Office.HostType.Word) {
             log('if (Office.context.host === Office.HostType.Word)');
             Word.document.addHandlerAsync('documentSelectionChanged', () => {
