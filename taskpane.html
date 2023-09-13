@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=33"></script>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=34"></script>
 </head>
 <body>
-    <p>This add-in displays the selected text from the document **</p>
+    <p>This add-in displays the selected text from the document *-*</p>
     <div id="selectedText"></div>
     <div id="logs"></div>
 </body>
@@ -28,9 +28,14 @@
                 log('Office.onReady - info: ' + info.host);
                 if (info.host === Office.HostType.Word) {
                     log('info.host === Office.HostType.Word');
-                    Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, (evtArgs) => {
-                        log('addHandlerAsync: ', JSON.stringify(evtArgs));
-                    });
+                    try {
+                        Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, (evtArgs) => {
+                            log('addHandlerAsync: ', JSON.stringify(evtArgs));
+                        });
+                    } catch (error) {
+                        log('error: ', JSON.stringify(error));
+                    }
+                    
                     log('Office - if: ' + JSON.stringify(Office));
                 }
             })
