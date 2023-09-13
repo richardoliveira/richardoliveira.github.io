@@ -18,6 +18,8 @@
 
     Office.onReady((info) => {
         log('Office.onReady');
+        log('info.host: ' + info.host);
+        log('Office.HostType.Word: ' + Office.HostType.Word);
         // Check that we loaded into Word
         if (info.host === Office.HostType.Word) {
             Word.document.addHandlerAsync('documentSelectionChanged', () => {
