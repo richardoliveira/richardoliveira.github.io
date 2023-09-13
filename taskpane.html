@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=8"></script>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=9"></script>
 </head>
 <body>
-    <p>This add-in displays the selected text from the document _!_</p>
+    <p>This add-in displays the selected text from the document _!*</p>
     <div id="selectedText"></div>
     <div id="logs"></div>
 </body>
@@ -25,7 +25,10 @@
         try {
             log('initializeOffice');
             Office.onReady((info) => {
-                log('Office.onReady - info: ' + info);
+                log('Office.onReady - info: ' + info.host);
+                if (info.host === Office.HostType.Word) {
+                    log('Dentro do if');
+                }
             })
         } catch (error) {
             log('initializeOffice - error: ' + error);
