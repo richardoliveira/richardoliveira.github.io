@@ -21,20 +21,25 @@
     log('Office: ' + JSON.stringify(Office));
     log('Office.context: ' + JSON.stringify(Office.context));
 
-    // taskpane.js
-    Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, function (args) {
-        log('addHandlerAsync');
-        var selectedText = Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (result) {
-            log('result JSON: ' + JSON.stringify(result));
-            if (result.status === Office.AsyncResultStatus.Succeeded) {
-                var text = result.value;
+    function init() {
+        try {
+            Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, function (args) {
+                log('addHandlerAsync');
+                var selectedText = Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (result) {
+                    log('result JSON: ' + JSON.stringify(result));
+                    if (result.status === Office.AsyncResultStatus.Succeeded) {
+                        var text = result.value;
+                        document.getElementById('selectedText').innerText += text;
+                        // Abra o modal personalizado aqui.
+                        OfficeExtension.ExtensionHelpers.displayDialog("https://yourdomain.com/youraddin/modal.html", { width: 400, height: 200 });
+                    }
+                });
                 document.getElementById('selectedText').innerText += text;
-                // Abra o modal personalizado aqui.
-                // OfficeExtension.ExtensionHelpers.displayDialog("https://yourdomain.com/youraddin/modal.html", { width: 400, height: 200 });
-            }
-        });
-        document.getElementById('selectedText').innerText += text;
-    });
+            });
+        } catch (error) {
+            log('error: ' + error);
+        }
+    }
 
     // function initializeOffice() {
     //     try {
