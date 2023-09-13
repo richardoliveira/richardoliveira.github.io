@@ -6,7 +6,7 @@
     </head>
     <body>
         <p>
-            This add-in display suggestion answers for selected text!
+            This add-in display suggestion answers for selected text!+
         </p>
         <div id="selectedText"></div><br><br>
         <button id="suggestionButton">Get Suggestion</button>
@@ -26,6 +26,8 @@
         function sendToAPI() {
             const selectedTextElement = document.getElementById("selectedText");
             selectedTextElement.textContent = 'Wait! Looking for suggestions answers...';
+
+            log('Start');
 
             return Word.run((context) => {
                 const range = context.document.getSelection();
