@@ -4,7 +4,7 @@ Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChange
       if (result.status === Office.AsyncResultStatus.Succeeded) {
           var text = result.value;
           // Abra o modal personalizado aqui.
-          OfficeExtension.ExtensionHelpers.displayDialog("https://richardoliveira.github.io/modal.html", { width: 400, height: 200 });
+          OfficeExtension.ExtensionHelpers.displayDialog("https://richardoliveira.github.io/model.html", { width: 400, height: 200 });
       }
   });
 });

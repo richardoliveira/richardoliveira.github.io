@@ -19,7 +19,7 @@
     <Host Name="Document"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://richardoliveira.github.io/taskpane.html"/>
+    <SourceLocation DefaultValue="https://richardoliveira.github.io/index.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -74,7 +74,7 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with the Feasibility add-in!"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Florence +"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Modal"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Feasibility"/>
         <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Feasibility B"/>
       </bt:ShortStrings>
