@@ -9,17 +9,17 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Feasibility"/>
   <Description DefaultValue="A simple feasibility Office Add-in."/>
-  <IconUrl DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/assets/icon-64.png"/>
+  <IconUrl DefaultValue="https://richardoliveira.github.io/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://richardoliveira.github.io/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/>
   <AppDomains>
-    <AppDomain>https://github.com/richardoliveira/add-in-word/tree/main</AppDomain>
+    <AppDomain>https://richardoliveira.github.io</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Document"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/taskpane.html"/>
+    <SourceLocation DefaultValue="https://richardoliveira.github.io/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -64,23 +64,23 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://richardoliveira.github.io/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://richardoliveira.github.io/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://richardoliveira.github.io/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="http://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://github.com/richardoliveira/add-in-word/tree/main/taskpane.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://richardoliveira.github.io/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Get started with the Hello world add-in!"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Contoso Add-in"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Hello world"/>
-        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Hello world"/>
+        <bt:String id="GetStarted.Title" DefaultValue="Get started with the Feasibility add-in!"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Feasibility Add-in"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Feasibility"/>
+        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Feasibility"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Hello world' button to get started."/>
-        <bt:String id="TaskpaneButton.SupertipText" DefaultValue="Open the Hello world add-in"/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Feasibility' button to get started."/>
+        <bt:String id="TaskpaneButton.SupertipText" DefaultValue="Open the Feasibility add-in"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
