@@ -5,7 +5,7 @@
         src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=37"></script>
     </head>
     <body>
-        <p>This add-in displays the selected text from the document +=+</p>
+        <p>This add-in displays the selected text from the document ++</p>
         <div id="selectedText"></div>
         <button id="suggestionButton">Get Suggestion</button>
         <div id="logs"></div>
@@ -25,6 +25,18 @@
                 return context.sync()
                 .then(() => {
                     const selectedTextElement = document.getElementById("selectedText");
+                    selectedTextElement.textContent = "Wait! Looking for suggestions answers...";
+
+                    var apiURL = 'https://feasibility-api-dev.fhcplayground.com/api/v1/questionnaires/similar-questions?questionnarie=' + range.text;
+                    var requestOptions = {
+                        method: 'GET',
+                        headers: { 'Content-Type': 'application/json' }
+                    };
+
+                    // fetch(apiURL, requestOptions)
+                    //     .then(response => response.json())
+                    //     .then(data => {})
+
                     selectedTextElement.textContent = "Selected Text: " + range.text;
                 });
             });
