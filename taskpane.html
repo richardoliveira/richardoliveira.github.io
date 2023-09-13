@@ -5,7 +5,7 @@
         src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=40"></script>
     </head>
     <body>
-        <p>This add-in displays the selected text from the document ++</p>
+        <p>This add-in displays the selected text from the document +-</p>
         <div id="selectedText"></div>
         <button id="suggestionButton">Get Suggestion</button>
         <div id="logs"></div>
@@ -37,7 +37,7 @@
                     //     .then(response => response.json())
                     //     .then(data => {})
 
-                    selectedTextElement.textContent = "Selected Text: " + range.text;
+                    selectedTextElement.textContent = "Selected Text: " + apiURL;
                 });
             });
         }
