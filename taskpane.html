@@ -14,6 +14,26 @@
         Office.trace(text);
     }
     log('Add-in iniciado');
+
+    Office.onReady((info) => {
+        // Check that we loaded into Word
+        if (info.host === Office.HostType.Word) {
+            Word.document.addHandlerAsync('documentSelectionChanged', () => {
+                log('addHandlerAsync');
+                Word.run(context => {
+                    log('Word.run');
+                    const range = context.document.getSelection();
+                    range.load('text');
+                    return context.sync().then(() => {
+                        log('context.sync');
+                        const selectedTextElement = document.getElementById("selectedText");
+                        selectedTextElement.textContent = "Texto selecionado: " + range.text;
+                    });
+                });
+            });
+        }
+    });
+
     Office.initialize = () => {
         log('Office.initialize');
         log('Office.context.host: ' + Office.context.host);
