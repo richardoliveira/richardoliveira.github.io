@@ -5,7 +5,7 @@
         src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=11"></script>
     </head>
     <body>
-        <p>This add-in displays the selected text from the document =+</p>
+        <p>This add-in displays the selected text from the document +=+</p>
         <div id="selectedText"></div>
         <div id="logs"></div>
         <button id="helloButton">Say hello</button>
@@ -19,8 +19,16 @@
     
         function sayHello() {
             return Word.run((context) => {
-                const paragraph = context.document.body.insertParagraph("Hello World", Word.InsertLocation.start);
-                return context.sync();
+                const range = context.document.getSelection();
+                range.load('text');
+                
+                return context.sync()
+                .then(() => {
+                    const selectedTextElement = document.getElementById("selectedText");
+                    selectedTextElement.textContent = "Texto selecionado: " + range.text;
+                });
+                // const paragraph = context.document.body.insertParagraph("Hello World", Word.InsertLocation.start);
+                // return context.sync();
             });
         }
     </script>
