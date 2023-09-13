@@ -4,7 +4,7 @@
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 </head>
 <body>
-    <p>This add-in displays the selected text from the document -</p>
+    <p>This add-in displays the selected text from the document !</p>
     <div id="selectedText"></div>
     <div id="logs"></div>
 </body>
@@ -14,8 +14,10 @@
         Office.trace(text);
     }
     log('Add-in iniciado');
+    log('Add-in iniciado 2');
 
     Office.onReady((info) => {
+        log('Office.onReady');
         // Check that we loaded into Word
         if (info.host === Office.HostType.Word) {
             Word.document.addHandlerAsync('documentSelectionChanged', () => {
