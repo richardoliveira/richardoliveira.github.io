@@ -2,75 +2,30 @@
     <html>
     <head>
         <script type="text/javascript" 
-        src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=23"></script>
+        src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=37"></script>
     </head>
     <body>
-        <p>
-            This add-in display suggestion answers for selected text!+
-        </p>
-        <div id="selectedText"></div><br><br>
+        <p>This add-in displays the selected text from the document +=+</p>
+        <div id="selectedText"></div>
         <button id="suggestionButton">Get Suggestion</button>
         <div id="logs"></div>
     </body>
     <script>
         Office.onReady((info) => {
             if (info.host === Office.HostType.Word) {
-                document.getElementById("suggestionButton").onclick = sendToAPI;
+                document.getElementById("suggestionButton").onclick = sayHello;
             }
         });
-
-        function log(text) {
-            document.getElementById('logs').innerText += text + '\n';
-        }
     
-        function sendToAPI() {
-            const selectedTextElement = document.getElementById("selectedText");
-            selectedTextElement.textContent = 'Wait! Looking for suggestions answers...';
-
-            log('Start');
-
+        function sayHello() {
             return Word.run((context) => {
                 const range = context.document.getSelection();
                 range.load('text');
-
-                log('Selected Text: ' + range.text);
                 
                 return context.sync()
-                    .then(() => {
-                        var apiURL = `https://feasibility-api-dev.fhcplayground.com/api/v1/questionnaires/similar-questions?questionnarie=${range.text}`; //Primary site name';
-                        var requestOptions = {
-                            method: 'GET',
-                            headers: { 'Content-Type': 'application/json' }
-                        };
-
-                        log('Call api: ' + apiURL);
-
-                        fetch(apiURL, requestOptions)
-                            .then(response => response.json())
-                            .then(data => {
-                                log('Api response: ' + JSON.stringify(data));
-
-                                if (data.length === 0) {
-                                    selectedTextElement.textContent = 'No suggestions for the selected text.';
-                                    return;
-                                }
-
-                                const messages = [];
-                                for (let index = 0; index < data.length; index++) {
-                                    messages.push(`<b>Question #${index+1} (${data[index].score}):</b>${data[index].questionText}<br>`);
-                                    for (let x = 0; x < data[index].answers.length; x++) {
-                                    messages.push(`<b>Answer #${x+1}:</b> ${data[index].answers[x].answerText}<br>`);
-                                    }
-                                    messages.push('<br>');
-                                }
-
-                                log('Show responses: ' + JSON.stringify(messages));
-                                selectedTextElement.textContent = messages.join('\n');
-                            })
-                            .catch(error => {
-                                log('Error communicating with the API: ' + JSON.stringify(error));
-                            });
-
+                .then(() => {
+                    const selectedTextElement = document.getElementById("selectedText");
+                    selectedTextElement.textContent = "Selected Text: " + range.text;
                 });
             });
         }
