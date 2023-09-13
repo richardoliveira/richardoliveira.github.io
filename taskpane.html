@@ -24,8 +24,9 @@
         log('Event: ' + evtArgs);
     })
 
-    Office.initialize = () => {
+    Office.initialize = (info) => {
         log('Office.initialize');
+        log('Office.initialize - info' + JSON.stringify(info));
     }
 
     Office.onReady((info) => {
