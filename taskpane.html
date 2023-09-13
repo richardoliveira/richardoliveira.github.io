@@ -11,10 +11,9 @@
 <script>
     function log(text) {
         document.getElementById('logs').innerText += text + '\n';
-        Office.trace(text);
     }
-    log('Add-in iniciado 1');
-    log('Add-in iniciado 2');
+    log('Add-in iniciado +1');
+    log('Add-in iniciado +2');
 
     Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, (evtArgs) => {
         log('Event: ' + evtArgs);
