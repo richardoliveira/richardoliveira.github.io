@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=4"></script>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=5"></script>
 </head>
 <body>
-    <p>This add-in displays the selected text from the document-!_</p>
+    <p>This add-in displays the selected text from the document *!_</p>
     <div id="selectedText"></div>
     <div id="logs"></div>
 </body>
@@ -18,11 +18,15 @@
     }
     log('Add-in iniciado +1');
     log('Add-in iniciado +2');
-    log('Office: ' + Office);
+    log('Office: ' + JSON.stringify(Office));
 
     Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, (evtArgs) => {
         log('Event: ' + evtArgs);
     })
+
+    Office.initialize = () => {
+        log('Office.initialize');
+    }
 
     Office.onReady((info) => {
         log('Office.onReady');
