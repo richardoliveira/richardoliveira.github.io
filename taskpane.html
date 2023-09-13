@@ -5,7 +5,7 @@
         src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=46"></script>
     </head>
     <body>
-        <p>This add-in displays the selected text from the document --</p>
+        <p>This add-in displays the selected text from the document -+</p>
         <div id="selectedText"></div>
         <button id="suggestionButton">Get Suggestion</button>
         <div id="logs"></div>
@@ -25,7 +25,7 @@
                 return context.sync()
                 .then(() => {
                     const selectedTextElement = document.getElementById("selectedText");
-                    selectedTextElement.textContent = "Wait! Looking for suggestions answers...";
+                    selectedTextElement.innerHTML = "Wait! Looking for suggestions answers...";
 
                     var apiURL = 'https://feasibility-api-dev.fhcplayground.com/api/v1/questionnaires/similar-questions?questionnarie=' + range.text;
                     var requestOptions = {
@@ -36,10 +36,24 @@
                     fetch(apiURL, requestOptions)
                         .then(response => response.json())
                         .then(data => {
-                            selectedTextElement.textContent = "Retorno: " + JSON.stringify(data);
+                            selectedTextElement.innerHTML = "Retorno: " + JSON.stringify(data);
+                            if (data.length === 0) {
+                                selectedTextElement.innerHTML = 'No suggestions for the selected text.';
+                                return;
+                            }
+
+                            const messages = [];
+                            for (let index = 0; index < data.length; index++) {
+                                messages.push('<b>Question #'+ index+1 +' ('+ data[index].score + '):</b>'+ data[index].questionText +'<br>');
+                                for (let x = 0; x < data[index].answers.length; x++) {
+                                    messages.push('<b>Answer #'+ x+1 +':</b> '+ data[index].answers[x].answerText + '<br>');
+                                }
+                                messages.push('<br>');
+                            }
+                            selectedTextElement.innerHTML = messages.join('\n');
                         })
 
-                    selectedTextElement.textContent = "Selected Text: " + apiURL;
+                    selectedTextElement.innerHTML = "Selected Text: " + apiURL;
                 });
             });
         }
