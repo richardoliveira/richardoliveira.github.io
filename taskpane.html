@@ -2,10 +2,10 @@
     <html>
     <head>
         <script type="text/javascript" 
-        src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=45"></script>
+        src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=46"></script>
     </head>
     <body>
-        <p>This add-in displays the selected text from the document +-</p>
+        <p>This add-in displays the selected text from the document --</p>
         <div id="selectedText"></div>
         <button id="suggestionButton">Get Suggestion</button>
         <div id="logs"></div>
@@ -33,9 +33,11 @@
                         headers: { 'Content-Type': 'application/json' }
                     };
 
-                    // fetch(apiURL, requestOptions)
-                    //     .then(response => response.json())
-                    //     .then(data => {})
+                    fetch(apiURL, requestOptions)
+                        .then(response => response.json())
+                        .then(data => {
+                            selectedTextElement.textContent = "Retorno: " + JSON.stringify(data);
+                        })
 
                     selectedTextElement.textContent = "Selected Text: " + apiURL;
                 });
