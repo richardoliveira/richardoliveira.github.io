@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=36"></script>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=39"></script>
 </head>
 <body>
     <p>This add-in displays the selected text from the document *-*-*</p>
@@ -29,21 +29,26 @@
                 if (info.host === Office.HostType.Word) {
                     log('info.host === Office.HostType.Word-');
                     try {
-                        throw Error('Teste de throw');
-                        Word.document.addHandlerAsync('documentSelectionChanged', (evtArgs) => {
-                            log('Word addHandlerAsync 1: ', JSON.stringify(evtArgs));
+                        Office.context.document.addHandlerAsync("documentSelectionChanged", myHandler, function(result){
+                            log('result: ', JSON.stringify(result));
                         });
-                    } catch (error) {
-                        log('error 1: ', JSON.stringify(error));
-                    }
-
-                    try {
-                        Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, (evtArgs) => {
-                            log('addHandlerAsync 2: ', JSON.stringify(evtArgs));
-                        });
+                        // Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, (evtArgs) => {
+                        //     log('addHandlerAsync 2: ', JSON.stringify(evtArgs));
+                        // });
                     } catch (error) {
                         log('error 2: ', JSON.stringify(error));
                     }
+
+                    // try {
+                    //     throw Error('Teste de throw');
+                    //     Word.document.addHandlerAsync('documentSelectionChanged', (evtArgs) => {
+                    //         log('Word addHandlerAsync 1: ', JSON.stringify(evtArgs));
+                    //     });
+                    // } catch (error) {
+                    //     log('error 1: ', JSON.stringify(error));
+                    // }
+
+                    
                     
                     log('Office - if: ' + JSON.stringify(Office));
                 }
@@ -53,6 +58,16 @@
         }
     }
     initializeOffice();
+
+    function myHandler(eventArgs){
+        log('myHandler: ' + JSON.stringify(eventArgs));
+        write('Document Selection Changed');
+    }
+
+    function write(message){
+        log('write: ' + message);
+        document.getElementById('selectedText').innerText += message;
+    }
     // Office.onReady((info) => {
     //     log('Office.onReady');
     //     log('info.host: ' + info.host);
