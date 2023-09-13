@@ -16,11 +16,15 @@
     log('Add-in iniciado');
     log('Add-in iniciado 2');
 
+    Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, (evtArgs) => {
+        log('Event: ' + evtArgs);
+    })
+
     Office.onReady((info) => {
         log('Office.onReady');
         log('info.host: ' + info.host);
         log('Office.HostType.Word: ' + Office.HostType.Word);
-        // Check that we loaded into Word
+
         if (info.host === Office.HostType.Word) {
             Word.document.addHandlerAsync('documentSelectionChanged', () => {
                 log('addHandlerAsync');
