@@ -6,22 +6,32 @@
 <body>
     <p>This add-in displays the selected text from the document!</p>
     <div id="selectedText"></div>
+    <div id="logs"></div>
 </body>
 <script>
-    Office.onReady((info) => {
-        if (info.host === Office.HostType.Word) {
-            Word.document.onSelectionChanged.add(() => {
-                return Word.run((context) => {
-                    const selectedRange = context.document.getSelection();
-                    selectedRange.load("text");
-                    return context.sync()
-                        .then(() => {
-                            const selectedText = document.getElementById("selectedText");
-                            selectedText.innerHTML = "O texto selecionado foi: " + selectedRange.text;
-                        });
+    function log(text) {
+        document.getElementById('logs').innerText += text + '\n';
+        Office.trace(text);
+    }
+    log('Add-in iniciado');
+    Office.initialize = () => {
+        log('Office.initialize');
+        if (Office.context.host === Office.HostType.Word) {
+            log('if (Office.context.host === Office.HostType.Word)');
+            Word.document.addHandlerAsync('documentSelectionChanged', () => {
+                log('addHandlerAsync');
+                Word.run(context => {
+                    log('Word.run');
+                    const range = context.document.getSelection();
+                    range.load('text');
+                    return context.sync().then(() => {
+                        log('context.sync');
+                        const selectedTextElement = document.getElementById("selectedText");
+                        selectedTextElement.textContent = "Texto selecionado: " + range.text;
+                    });
                 });
             });
         }
-    });
+    };
 </script>
 </html>
