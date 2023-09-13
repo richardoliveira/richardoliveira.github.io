@@ -16,6 +16,7 @@
     log('Add-in iniciado');
     Office.initialize = () => {
         log('Office.initialize');
+        log('Office.context.host: ' + Office.context.host);
         if (Office.context.host === Office.HostType.Word) {
             log('if (Office.context.host === Office.HostType.Word)');
             Word.document.addHandlerAsync('documentSelectionChanged', () => {
