@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=3"></script>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=4"></script>
 </head>
 <body>
-    <p>This add-in displays the selected text from the document-!+</p>
+    <p>This add-in displays the selected text from the document-!_</p>
     <div id="selectedText"></div>
     <div id="logs"></div>
 </body>
 <script>
     function log(text) {
-        document.getElementById('logs').innerText += text + '\n';
+        try {
+            document.getElementById('logs').innerText += text + '\n';
+        } catch (error) {
+            document.getElementById('logs').innerText += error + '\n';
+        }
     }
     log('Add-in iniciado +1');
     log('Add-in iniciado +2');
