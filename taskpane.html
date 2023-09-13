@@ -2,22 +2,21 @@
     <html>
     <head>
         <script type="text/javascript" 
-        src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=47"></script>
+        src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=70"></script>
     </head>
     <body>
-        <p>This add-in displays the selected text from the document -+</p>
+        <p>Displays suggestion answers for selected text.</p><br>
+        <button id="suggestionButton">Get Suggestion</button><br><br>
         <div id="selectedText"></div>
-        <button id="suggestionButton">Get Suggestion</button>
-        <div id="logs"></div>
     </body>
     <script>
         Office.onReady((info) => {
             if (info.host === Office.HostType.Word) {
-                document.getElementById("suggestionButton").onclick = sayHello;
+                document.getElementById("suggestionButton").onclick = getSuggestionAnswerForAPI;
             }
         });
     
-        function sayHello() {
+        function getSuggestionAnswerForAPI() {
             return Word.run((context) => {
                 const range = context.document.getSelection();
                 range.load('text');
@@ -36,7 +35,6 @@
                     fetch(apiURL, requestOptions)
                         .then(response => response.json())
                         .then(data => {
-                            selectedTextElement.innerHTML = "Retorno: " + JSON.stringify(data);
                             if (data.length === 0) {
                                 selectedTextElement.innerHTML = 'No suggestions for the selected text.';
                                 return;
@@ -52,8 +50,6 @@
                             }
                             selectedTextElement.innerHTML = messages.join('\n');
                         })
-
-                    selectedTextElement.innerHTML = "Selected Text: " + apiURL;
                 });
             });
         }

@@ -8,9 +8,9 @@
   <ProviderName>Florence</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Feasibility"/>
-  <Description DefaultValue="A simple feasibility Office Add-in."/>
-  <IconUrl DefaultValue="https://richardoliveira.github.io/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://richardoliveira.github.io/assets/icon-64.png"/>
+  <Description DefaultValue="Add-in for get suggestion answers for selected text."/>
+  <IconUrl DefaultValue="https://richardoliveira.github.io/assets/florence-icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://richardoliveira.github.io/assets/florence-icon-64.png"/>
   <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/>
   <AppDomains>
     <AppDomain>https://richardoliveira.github.io</AppDomain>
@@ -74,12 +74,12 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with the Feasibility add-in!"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Add-in"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Feasibility"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Florence"/>
-        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Feasibility B"/>
+        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Feasibility Add-in"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Feasibility' button to get started."/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your Feasibility add-in loaded succesfully. Go to the HOME tab and click the 'Feasibility' button to get started."/>
         <bt:String id="TaskpaneButton.SupertipText" DefaultValue="Open the Feasibility add-in"/>
       </bt:LongStrings>
     </Resources>
