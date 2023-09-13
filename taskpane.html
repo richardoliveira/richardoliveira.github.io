@@ -5,30 +5,59 @@
         src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=13"></script>
     </head>
     <body>
-        <p>This add-in displays the selected text from the document +=+</p>
-        <div id="selectedText"></div>
+        <p>
+            This add-in display suggestion answers for selected text
+        </p>
+        <div id="selectedText"></div><br><br>
+        <button id="suggestionButton">Get Suggestion</button>
         <div id="logs"></div>
-        <button id="helloButton">Say hello</button>
     </body>
     <script>
         Office.onReady((info) => {
             if (info.host === Office.HostType.Word) {
-                document.getElementById("helloButton").onclick = sayHello;
+                document.getElementById("suggestionButton").onclick = sendToAPI;
             }
         });
     
-        function sayHello() {
+        function sendToAPI() {
+            selectedTextElement.textContent = 'Wait! Looking for suggestions answers...';
             return Word.run((context) => {
                 const range = context.document.getSelection();
                 range.load('text');
                 
                 return context.sync()
                 .then(() => {
-                    const selectedTextElement = document.getElementById("selectedText");
-                    selectedTextElement.textContent = "Texto selecionado: " + range.text;
+                    var apiURL = `https://feasibility-api-dev.fhcplayground.com/api/v1/questionnaires/similar-questions?questionnarie=${range.text}`; //Primary site name';
+                    var requestOptions = {
+                        method: 'GET',
+                        headers: { 'Content-Type': 'application/json' }
+                    };
+
+                    fetch(apiURL, requestOptions)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.length === 0) {
+                                divContent.innerHTML = 'No suggestions for the selected text.';
+                                return;
+                            }
+
+                            const messages = [];
+                            for (let index = 0; index < data.length; index++) {
+                                messages.push(`<b>Question #${index+1} (${data[index].score}):</b>${data[index].questionText}<br>`);
+                                for (let x = 0; x < data[index].answers.length; x++) {
+                                messages.push(`<b>Answer #${x+1}:</b> ${data[index].answers[x].answerText}<br>`);
+                                }
+                                messages.push('<br>');
+                            }
+
+                            const selectedTextElement = document.getElementById("selectedText");
+                            selectedTextElement.textContent = messages.join('\n');
+                        })
+                        .catch(error => {
+                            console.error('Error communicating with the API:', error);
+                        });
+
                 });
-                // const paragraph = context.document.body.insertParagraph("Hello World", Word.InsertLocation.start);
-                // return context.sync();
             });
         }
     </script>

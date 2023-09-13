@@ -64,9 +64,9 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://richardoliveira.github.io/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://richardoliveira.github.io/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://richardoliveira.github.io/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://richardoliveira.github.io/assets/florence-icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://richardoliveira.github.io/assets/florence-icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://richardoliveira.github.io/assets/florence-icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="http://go.microsoft.com/fwlink/?LinkId=276812"/>
