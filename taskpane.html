@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=6"></script>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js?v=8"></script>
 </head>
 <body>
-    <p>This add-in displays the selected text from the document *!_</p>
+    <p>This add-in displays the selected text from the document _!_</p>
     <div id="selectedText"></div>
     <div id="logs"></div>
 </body>
@@ -16,61 +16,64 @@
             document.getElementById('logs').innerText += error + '\n';
         }
     }
-    log('Add-in iniciado +1');
-    log('Add-in iniciado +2');
+    log('Add-in iniciado -1');
+    log('Add-in iniciado -2');
     log('Office: ' + JSON.stringify(Office));
+    log('Office.context: ' + JSON.stringify(Office.context));
 
-    Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, (evtArgs) => {
-        log('Event: ' + evtArgs);
-    })
-
-    Office.initialize = (info) => {
-        log('Office.initialize');
-        log('Office.initialize - info' + JSON.stringify(info));
+    function initializeOffice() {
+        try {
+            log('initializeOffice');
+            Office.onReady((info) => {
+                log('Office.onReady - info: ' + info);
+            })
+        } catch (error) {
+            log('initializeOffice - error: ' + error);
+        }
     }
+    initializeOffice();
+    // Office.onReady((info) => {
+    //     log('Office.onReady');
+    //     log('info.host: ' + info.host);
+    //     log('Office.HostType.Word: ' + Office.HostType.Word);
 
-    Office.onReady((info) => {
-        log('Office.onReady');
-        log('info.host: ' + info.host);
-        log('Office.HostType.Word: ' + Office.HostType.Word);
+    //     if (info.host === Office.HostType.Word) {
+    //         Word.document.addHandlerAsync('documentSelectionChanged', () => {
+    //             log('addHandlerAsync');
+    //             Word.run(context => {
+    //                 log('Word.run');
+    //                 const range = context.document.getSelection();
+    //                 range.load('text');
+    //                 return context.sync().then(() => {
+    //                     log('context.sync');
+    //                     const selectedTextElement = document.getElementById("selectedText");
+    //                     selectedTextElement.textContent = "Texto selecionado: " + range.text;
+    //                 });
+    //             });
+    //         });
+    //     }
+    // });
 
-        if (info.host === Office.HostType.Word) {
-            Word.document.addHandlerAsync('documentSelectionChanged', () => {
-                log('addHandlerAsync');
-                Word.run(context => {
-                    log('Word.run');
-                    const range = context.document.getSelection();
-                    range.load('text');
-                    return context.sync().then(() => {
-                        log('context.sync');
-                        const selectedTextElement = document.getElementById("selectedText");
-                        selectedTextElement.textContent = "Texto selecionado: " + range.text;
-                    });
-                });
-            });
-        }
-    });
-
-    Office.initialize = () => {
-        log('Office.initialize');
-        log('Office.context.host: ' + Office.context.host);
-        log('Office.HostType.Word: ' + Office.HostType.Word);
-        if (Office.context.host === Office.HostType.Word) {
-            log('if (Office.context.host === Office.HostType.Word)');
-            Word.document.addHandlerAsync('documentSelectionChanged', () => {
-                log('addHandlerAsync');
-                Word.run(context => {
-                    log('Word.run');
-                    const range = context.document.getSelection();
-                    range.load('text');
-                    return context.sync().then(() => {
-                        log('context.sync');
-                        const selectedTextElement = document.getElementById("selectedText");
-                        selectedTextElement.textContent = "Texto selecionado: " + range.text;
-                    });
-                });
-            });
-        }
-    };
+    // Office.initialize = () => {
+    //     log('Office.initialize');
+    //     log('Office.context.host: ' + Office.context.host);
+    //     log('Office.HostType.Word: ' + Office.HostType.Word);
+    //     if (Office.context.host === Office.HostType.Word) {
+    //         log('if (Office.context.host === Office.HostType.Word)');
+    //         Word.document.addHandlerAsync('documentSelectionChanged', () => {
+    //             log('addHandlerAsync');
+    //             Word.run(context => {
+    //                 log('Word.run');
+    //                 const range = context.document.getSelection();
+    //                 range.load('text');
+    //                 return context.sync().then(() => {
+    //                     log('context.sync');
+    //                     const selectedTextElement = document.getElementById("selectedText");
+    //                     selectedTextElement.textContent = "Texto selecionado: " + range.text;
+    //                 });
+    //             });
+    //         });
+    //     }
+    // };
 </script>
 </html>
