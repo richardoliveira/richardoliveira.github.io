@@ -75,7 +75,7 @@
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with the Feasibility add-in!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Florence"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Feasibility Health Care"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Feasibility"/>
         <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Feasibility B"/>
       </bt:ShortStrings>
       <bt:LongStrings>
